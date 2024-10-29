@@ -1,0 +1,17 @@
+{
+    "name": "hp/exel_json",
+    "autoload": {
+        "psr-4": {
+            "Hp\\ExelJson\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "oussama",
+            "email": "mail@gmail.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^3.3"
+    }
+}
