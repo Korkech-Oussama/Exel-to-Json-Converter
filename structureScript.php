@@ -42,16 +42,20 @@ function xlsToJson($file) {
             // Loop through date headers and get times for each date
             foreach ($dateHeaders as $column => $date) {
                 $time = isset($row[$column]) ? $row[$column] : "--:--"; // Default if empty
+        
                 // Split the time string by newline and then space
                 $timeEntries = explode("\n",$time);
                 // Map each time entry to an array of time parts
                 $timeArray = array_merge(...array_map(function($entry) {
                     return explode(" ", $entry);
                 }, $timeEntries));
+                
                 // Add the times to the data entry
                 $dataEntry["times"][] = [
                     "day" => $date,
-                    "time" => $timeArray
+                    "time" => array_filter($timeArray,function($entry){
+                        return $entry !== "--:--";
+                    })
                 ];
             }
 
